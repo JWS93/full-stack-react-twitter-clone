@@ -75,8 +75,8 @@ RSpec.describe Api::TweetsController, type: :controller do
 
   describe 'GET api/users/:username/tweets' do
     it 'renders tweets by username' do
-      user1 = FactoryBot.create(:user, username: 'user1', email: 'user1@user.com')
-      user2 = FactoryBot.create(:user, username: 'user2', email: 'user2@user.com')
+      user1 = FactoryBot.create(:user, username: 'user1', email: 'user1@user.com', password: 'asdasdasd')
+      user2 = FactoryBot.create(:user, username: 'user2', email: 'user2@user.com', password: 'asdasdasd')
 
       tweet1 = FactoryBot.create(:tweet, user: user1)
       FactoryBot.create(:tweet, user: user2)

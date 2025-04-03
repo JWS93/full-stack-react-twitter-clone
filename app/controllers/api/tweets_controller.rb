@@ -9,7 +9,7 @@ module Api
 				@tweet = user.tweets.new(tweet_params)
 
 				if @tweet.save
-					render 'tweets/create'
+					render 'api/tweets/create'
 				else
 					render json: { success: false }
 				end
@@ -37,13 +37,13 @@ module Api
 
 		def index
 			@tweets = Tweet.all
-			render 'tweets/index'
+			render 'api/tweets/index'
 		end
 
 		def index_by_user
 			@user = User.find_by(username: params[:username])
 			@tweets = @user.tweets
-			render 'tweets/index'
+			render 'api/tweets/index'
 		end
 
 
