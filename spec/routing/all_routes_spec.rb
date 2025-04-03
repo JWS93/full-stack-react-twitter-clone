@@ -1,35 +1,35 @@
 require 'rails_helper'
 
 RSpec.describe 'Route definition', :type => :routing do
-  it 'of POST /users' do
-    expect(:post => '/users').to route_to(:controller => 'users', :action => 'create')
+  it 'of POST api/users' do
+    expect(:post => 'api/users').to route_to(:controller => 'api/users', :action => 'create')
   end
 
-  it 'of POST /sessions' do
-    expect(:post => '/sessions').to route_to(:controller => 'sessions', :action => 'create')
+  it 'of POST api/sessions' do
+    expect(:post => 'api/sessions').to route_to(:controller => 'api/sessions', :action => 'create')
   end
 
-  it 'of GET /authenticated' do
-    expect(:get => '/authenticated').to route_to(:controller => 'sessions', :action => 'authenticated')
+  it 'of GET api/authenticated' do
+    expect(:get => 'api/authenticated').to route_to(:controller => 'api/sessions', :action => 'authenticated')
   end
 
-  it 'of DELETE /sessions' do
-    expect(:delete => '/sessions').to route_to(:controller => 'sessions', :action => 'destroy')
+  it 'of DELETE api/sessions' do
+    expect(:delete => 'api/sessions').to route_to(:controller => 'api/sessions', :action => 'destroy')
   end
 
-  it 'of POST /tweets' do
-    expect(:post => '/tweets').to route_to(:controller => 'tweets', :action => 'create')
+  it 'of POST api/tweets' do
+    expect(:post => 'api/tweets').to route_to(:controller => 'api/tweets', :action => 'create')
   end
 
-  it 'of GET /tweets' do
-    expect(:get => '/tweets').to route_to(:controller => 'tweets', :action => 'index')
+  it 'of GET api/tweets' do
+    expect(:get => 'api/tweets').to route_to(:controller => 'api/tweets', :action => 'index')
   end
 
-  it 'of DELETE /tweets/:id' do
-    expect(:delete => '/tweets/:id').to route_to(:controller => 'tweets', :action => 'destroy', :id => ':id')
+  it 'of DELETE api/tweets/:id' do
+    expect(:delete => 'api/tweets/:id').to route_to(:controller => 'api/tweets', :action => 'destroy', :id => ':id')
   end
 
-  it 'of GET /users/:username/tweets' do
-    expect(:get => '/users/:username/tweets').to route_to(:controller => 'tweets', :action => 'index_by_user', :username => ':username')
+  it 'of GET api/users/:username/tweets' do
+    expect(:get => 'api/users/:username/tweets').to route_to(:controller => 'api/tweets', :action => 'index_by_user', :username => ':username')
   end
 end

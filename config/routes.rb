@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-	root to: 'pages#login'
+	root 'pages#login'
+	get '/feeds' => 'feeds#index'
 
+	# USERS
 	namespace :api do
-		get '/feeds' => 'feeds#index'
-
-		# USERS
+		resources :users, only: [:create]
 		post '/users' => 'users#create'
 
 
@@ -21,6 +21,6 @@ Rails.application.routes.draw do
 		get '/users/:username/tweets' => 'tweets#index_by_user'
 
 		# Redirect all other paths to index page, which will be taken over by AngularJS
-		get '*path' => 'homepage#index'
+		get '*path' => 'feeds#index'
 	end
 end

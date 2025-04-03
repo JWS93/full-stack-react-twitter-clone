@@ -7,7 +7,11 @@
 }
 
 #login .login-box {
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.65);
+}
+
+#login .signup-box {
+	background-color: rgba(245, 245, 245, 0.65);
 }
 
 body {
@@ -16,4 +20,8 @@ body {
 	background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.intro {
+	color: white;
 }

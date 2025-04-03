@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe UsersController, type: :controller do
+RSpec.describe Api::UsersController, type: :controller do
   render_views
 
-  describe 'POST /users' do
+  describe 'POST api/users' do
     it 'renders new user object' do
       post :create, params: {
         user: {

@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe SessionsController, type: :controller do
+RSpec.describe Api::SessionsController, type: :controller do
   render_views
 
-  describe 'POST /sessions' do
+  describe 'POST api/sessions' do
     it 'renders new session object' do
       FactoryBot.create(:user, username: 'asdasdasd', password: 'asdasdasd')
 
@@ -20,7 +20,7 @@ RSpec.describe SessionsController, type: :controller do
     end
   end
 
-  describe 'GET /authenticated' do
+  describe 'GET api/authenticated' do
     it 'renders authenticated user object' do
       user = FactoryBot.create(:user)
       session = user.sessions.create
@@ -35,7 +35,7 @@ RSpec.describe SessionsController, type: :controller do
     end
   end
 
-  describe 'DELETE /sessions' do
+  describe 'DELETE api/sessions' do
     it 'renders success' do
       user = FactoryBot.create(:user)
       session = user.sessions.create
