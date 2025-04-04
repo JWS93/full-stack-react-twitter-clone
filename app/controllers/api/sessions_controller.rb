@@ -29,11 +29,12 @@ module Api
 
 				render json: {
 					authenticated: true,
-					username: user.username
+					user: { username: user.username }
 				}
 			else
 				render json: {
-					authenticated: false
+					authenticated: false,
+					user: nil
 				}
 			end
 		end

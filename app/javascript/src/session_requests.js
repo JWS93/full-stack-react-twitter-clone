@@ -1,21 +1,19 @@
-import $ from 'jquery';
-
-$.ajaxSetup({
-  headers: {
-    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-  }
-});
 
 export const login = async (username, password) => {
   try {
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
     const response = await fetch('api/sessions', {
       method: 'POST',
-      body: JSON.stringify({ username, password }),
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken
+      },
+      body: JSON.stringify({ user: { username, password } }),
       credentials: 'include',
     });
 
     if (response.ok) {
-      return { successs: true };
+      return { success: true };
     } else {
       const data = await response.json();
       return { success: false, errors: data.errors || ['Login Failed'] };
@@ -28,8 +26,11 @@ export const login = async (username, password) => {
 
 export const getCurrentUser = async () => {
   try {
-    const response = await fetch('api/sessions', {
+    const response = await fetch('api/authenticated', {
       method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       credentials: 'include',
     });
 

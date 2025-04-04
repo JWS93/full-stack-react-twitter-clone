@@ -1,15 +1,13 @@
-import $ from 'jquery';
-
-$.ajaxSetup({
-  headers: {
-    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-  }
-});
 
 export const newUser = async (username, email, password) => {
   try {
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
     const response = await fetch('api/users', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken
+      },
       body: JSON.stringify({
         user: { username, email, password },
       }),
