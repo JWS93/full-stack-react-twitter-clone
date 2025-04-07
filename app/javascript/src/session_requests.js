@@ -1,4 +1,3 @@
-
 export const login = async (username, password) => {
   try {
     const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
@@ -15,8 +14,8 @@ export const login = async (username, password) => {
     if (response.ok) {
       return { success: true };
     } else {
-      const data = await response.json();
-      return { success: false, errors: data.errors || ['Login Failed'] };
+      const errorData = await response.json();
+      return { success: false, errors: errorData.errors || ['Login Failed'] };
     }
   } catch (error) {
     console.error('Network error:', error);
@@ -43,5 +42,27 @@ export const getCurrentUser = async () => {
   } catch (error) {
     console.error('Network error:', error);
     return { success: false, user: null, errors: ['Network error'] };
+  }
+};
+
+export const logout = async () => {
+  try {
+    const response = await fetch('api/sessions', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    });
+    
+    if (response.ok) {
+      const data = await response.json();
+      return { success: true, user: null };
+    } else {
+      return { success: false, user: null };
+    }
+  } catch (error) {
+    console.error('Network error:', error);
+    return { success: false, user: null, errors: ['Network error']};
   }
 };
