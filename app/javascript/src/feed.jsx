@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { 
   postTweet,
   getAllTweets,
-
 } from './tweet_requests.js';
 import Layout from './layout.jsx'
 
@@ -15,7 +14,7 @@ class Feed extends Component {
       loadingTweets: true,
       errorTweets: null,
       postingTweets: false,
-      errorPosting: null
+      errorPosting: null,
     };
     this._isMounted = false;
   }
@@ -66,6 +65,7 @@ class Feed extends Component {
       }
     })
   };
+
 
   handleChange = (event) => {
 		this.setState({ [event.target.name]: event.target.value });
